@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+
+        <!---------------------Alertify----------------------->
+        <link href="~/lib/alertifyjs_2/css/alertify.css" rel="stylesheet" />
+        <link href="~/lib/alertifyjs_2/css/themes/bootstrap.css" rel="stylesheet" />
+        <link href="~/lib/alertifyjs_2/css/themes/default.css" rel="stylesheet" />
+    </environment>
+    <environment exclude="Development">
+
+
+    </environment>
+    <environment>
+        <!--------------Font Awesome----------------------->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!--------------Alertify----------------------->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+        <!------------Pagination With Jquery Database---------->
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" />
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css" />
+        <!------------Date Time Effect Jquery------------------>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+
+        <!--=========== Page Style==============-->
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
+        <!-- Dashboard Css Styles -->
+        <link href="~/Dashboard/from/css/register.css" rel="stylesheet" />
+        <link href="~/Dashboard/from/css/login.css" rel="stylesheet" />
+        <link href="~/Dashboard/from/css/error.css" rel="stylesheet" />
+
+    </environment>
+    @RenderSection("Styles", required: false)
+</head>
+<body>
+
+
+    <div>
+        @RenderBody()
+    </div>
+
+
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+        <!---------------------Alertify----------------------->
+        <script src="~/lib/alertifyjs_2/alertify.js"></script>
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+        <!---------------------Alertify----------------------->
+        <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    </environment>
+    <environment>
+        <!--------------Pagination Jquery Database------------>
+        <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
+        <!----------------Date Time Effect Jquery-------------->
+        <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+        <!----------------Font Awesome------------------------->
+        <script src="https://kit.fontawesome.com/4c7a57e3bc.js" crossorigin="anonymous"></script>
+
+        <!-- =========== Page Style ===========-->
+        
+    </environment>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

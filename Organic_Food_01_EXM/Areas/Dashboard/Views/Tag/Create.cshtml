@@ -1,0 +1,43 @@
+﻿@model Organic_Food_01_EXM.Models.Tag
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2 class="text-info">Create Tag Name</h2>
+<div id="panel"></div>
+
+<form asp-action="Create" method="post" id="FormCreate"
+      data-ajax="true"
+      data-ajax-method="post"
+      data-ajax-update="#panel"
+      data-ajax-success="success">
+
+    <div asp-validation-summary="ModelOnly"></div>
+    <div class="form-group">
+        <div class="col-2">
+            <label asp-for="TagName"></label>
+        </div>
+        <div class="col-5">
+            <input asp-for="TagName" class="form-control" />
+        </div>
+        <span asp-validation-for="TagName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary" value="Save" />
+        <a asp-action="Index" class="btn btn-success">Back To List</a>
+    </div>
+</form>
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<!--------------Partial View Ajax--------------------->
+<!--<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+<script src="~/lib/ajax/dist/jquery.unobtrusive-ajax.js"></script>
+<script type="text/javascript">
+    function success() {
+        $("#FormCreate").trigger('reset');
+    }
+</script>-->

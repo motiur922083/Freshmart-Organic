@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = "Delete";
+}
+
+<!--Error Message Pase-->
+<div class="alert alert-danger alert-dismissible fade show">
+    <strong> Are you sure? You want to delete thsi role!!!</strong>
+</div>
+
+
+<form asp-action="Delete" id="role-form" method="post" enctype="multipart/form-data">
+
+    <div class="p-3 rounded border">
+        <div asp-validation-summary="ModelOnly"></div>
+        <input type="hidden" value="@ViewBag.id" name="id" />
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label>Role Name</label>
+            </div>
+            <div class="col-5">
+                <input id="name" readonly="readonly" name="name" required="required" class="form-control" value="@ViewBag.name" />
+            </div>
+        </div>
+
+        <div class="form-group row offset-2">
+            <input type="submit" class="btn btn-danger mr-2" value="Delete" />
+            <a asp-action="Index" class="btn btn-success">Back To List</a>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+
+        $(".toggle-password").click(function () {
+
+            $(this).toggleClass("fa-eye fa-eye-slash");
+            var input = $($(this).attr("toggle"));
+            if (input.attr("type") == "password") {
+                input.attr("type", "text");
+            } else {
+                input.attr("type", "password");
+            }
+        });
+
+        $(document).ready(function () {
+            $("#register-form").validate({
+                rules: {
+                    FirstName: {
+                        required: true,
+                    },
+                    LastName: {
+                        required: true,
+                    },
+                    UserName: {
+                        required: true,
+                    },
+                    PasswordHash: {
+                        required: true,
+                    },
+                    messages: {
+                        UserName: "Please Enter Your Email",
+                        PasswordHash: "Please Enter Password",
+                    }
+
+                }
+            });
+        });
+    </script>
+}

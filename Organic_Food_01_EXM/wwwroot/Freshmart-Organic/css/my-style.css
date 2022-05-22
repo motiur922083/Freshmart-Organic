@@ -1,0 +1,8 @@
+﻿.dashboard a {
+    color: #ffffff;
+}
+
+.dashboard:hover {
+    background-color: #ff5722;
+}
+

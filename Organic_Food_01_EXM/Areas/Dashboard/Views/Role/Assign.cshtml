@@ -1,0 +1,54 @@
+﻿@model Organic_Food_01_EXM.Areas.Admin.Models.RoleUserVM
+@{
+    ViewData["Title"] = "Assign";
+}
+
+<h2 class="text-info">Role Assign</h2>
+
+<!--Error Role Already assign-->
+@if (ViewBag.message != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show">
+        <strong> @ViewBag.message</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+<form asp-action="Assign" method="post" enctype="multipart/form-data">
+
+    <div class="p-3 rounded border">
+        <div asp-validation-summary="ModelOnly"></div>
+
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="UserId"></label>
+            </div>
+            <div class="col-5">
+                <select asp-for="UserId" asp-items="ViewBag.UserId" class="form-control"></select>
+                @*<input asp-for="ProductTypeId" class="form-control" />*@
+            </div>
+            <span asp-validation-for="UserId" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="RoleId"></label>
+            </div>
+            <div class="col-5">
+                <select asp-for="RoleId" asp-items="ViewBag.RoleId" class="form-control"></select>
+                @*<input asp-for="SpecialTagId" class="form-control" />*@
+            </div>
+            <span asp-validation-for="RoleId" class="text-danger"></span>
+        </div>
+        
+        <div class="form-group row offset-2">
+            <input type="submit" class="btn btn-primary mr-2" value="Save" />
+            <a asp-action="Index" class="btn btn-success">Back To List</a>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,435 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+
+        <!---------------------Alertify----------------------->
+        <link href="~/lib/alertifyjs_2/css/alertify.css" rel="stylesheet" />
+        <link href="~/lib/alertifyjs_2/css/themes/bootstrap.css" rel="stylesheet" />
+        <link href="~/lib/alertifyjs_2/css/themes/default.css" rel="stylesheet" />
+    </environment>
+    <environment exclude="Development">
+
+
+    </environment>
+    <environment>
+        <!--------------Font Awesome----------------------->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!--------------Alertify----------------------->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+        <!------------Pagination With Jquery Database---------->
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" />
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css" />
+        <!------------Date Time Effect Jquery------------------>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+
+        <!--=========== Page Style==============-->
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
+        <!-- Dashboard Css Styles -->
+        <!-- Favicon icon -->
+        <link rel="icon" type="image/png" sizes="16x16" href="~/Freshmart-Organic/img/favicon.png">
+        <!-- Pignose Calender -->
+        <link href="~/Dashboard/plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet" />
+        <!-- Chartist -->
+        <link href="~/Dashboard/plugins/chartist/css/chartist.min.css" rel="stylesheet" />
+        <link href="~/Dashboard/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css" rel="stylesheet" />
+        <!-- Custom Stylesheet -->
+        <link href="~/Dashboard/css/style.css" rel="stylesheet" />
+
+    </environment>
+    @RenderSection("Styles", required: false)
+</head>
+<body>
+
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+            </svg>
+        </div>
+    </div>
+    
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <!--**********************************
+            Nav header start
+        ***********************************-->
+        <div class="nav-header">
+            <div class="brand-logo">
+                <a asp-area="Shopper" asp-controller="Home" asp-action="Index">
+                    <b class="logo-abbr">
+                        <img src="~/Freshmart-Organic/img/leaf.png" alt="" />
+                    </b>
+                    <span class="logo-compact"><img src="~/Freshmart-Organic/img/leaf.png" alt=""></span>
+                    <span class="brand-title">
+                        <img src="~/Freshmart-Organic/img/logo-3.png" style="width:180px;height:40px;" alt="">
+                    </span>
+                </a>
+            </div>
+        </div>
+        <!--**********************************
+            Nav header end
+        ***********************************-->
+        <!--**********************************
+            Header start
+        ***********************************-->
+        <div class="header">
+            <div class="header-content clearfix">
+                <div class="nav-control">
+                    <div class="hamburger">
+                        <span class="toggle-icon"><i class="icon-menu"></i></span>
+                    </div>
+                </div>
+                <div class="header-left">
+                    <div class="input-group icons">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i class="mdi mdi-magnify"></i></span>
+                        </div>
+                        <input type="search" class="form-control" placeholder="Search Dashboard" aria-label="Search Dashboard">
+                        <div class="drop-down animated flipInX d-md-none">
+                            <form action="#">
+                                <input type="text" class="form-control" placeholder="Search">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <ul class="clearfix">
+                        <li class="icons dropdown">
+                            <a href="javascript:void(0)" data-toggle="dropdown">
+                                <i class="mdi mdi-email-outline"></i>
+                                <span class="badge badge-pill gradient-1">3</span>
+                            </a>
+                            <div class="drop-down animated fadeIn dropdown-menu">
+                                <div class="dropdown-content-heading d-flex justify-content-between">
+                                    <span class="">3 New Messages</span>
+                                    <a href="javascript:void()" class="d-inline-block">
+                                        <span class="badge badge-pill gradient-1">3</span>
+                                    </a>
+                                </div>
+                                <div class="dropdown-content-body">
+                                    <ul>
+                                        <li class="notification-unread">
+                                            <a href="javascript:void()">
+                                                <img class="float-left mr-3 avatar-img" src="images/avatar/1.jpg" alt="">
+                                                <div class="notification-content">
+                                                    <div class="notification-heading">Saiful Islam</div>
+                                                    <div class="notification-timestamp">08 Hours ago</div>
+                                                    <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="notification-unread">
+                                            <a href="javascript:void()">
+                                                <img class="float-left mr-3 avatar-img" src="images/avatar/2.jpg" alt="">
+                                                <div class="notification-content">
+                                                    <div class="notification-heading">Adam Smith</div>
+                                                    <div class="notification-timestamp">08 Hours ago</div>
+                                                    <div class="notification-text">Can you do me a favour?</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void()">
+                                                <img class="float-left mr-3 avatar-img" src="images/avatar/3.jpg" alt="">
+                                                <div class="notification-content">
+                                                    <div class="notification-heading">Barak Obama</div>
+                                                    <div class="notification-timestamp">08 Hours ago</div>
+                                                    <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void()">
+                                                <img class="float-left mr-3 avatar-img" src="images/avatar/4.jpg" alt="">
+                                                <div class="notification-content">
+                                                    <div class="notification-heading">Hilari Clinton</div>
+                                                    <div class="notification-timestamp">08 Hours ago</div>
+                                                    <div class="notification-text">Hello</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li class="icons dropdown">
+                            <a href="javascript:void(0)" data-toggle="dropdown">
+                                <i class="mdi mdi-bell-outline"></i>
+                                <span class="badge badge-pill gradient-2">3</span>
+                            </a>
+                            <div class="drop-down animated fadeIn dropdown-menu dropdown-notfication">
+                                <div class="dropdown-content-heading d-flex justify-content-between">
+                                    <span class="">2 New Notifications</span>
+                                    <a href="javascript:void()" class="d-inline-block">
+                                        <span class="badge badge-pill gradient-2">5</span>
+                                    </a>
+                                </div>
+                                <div class="dropdown-content-body">
+                                    <ul>
+                                        <li>
+                                            <a href="javascript:void()">
+                                                <span class="mr-3 avatar-icon bg-success-lighten-2"><i class="icon-present"></i></span>
+                                                <div class="notification-content">
+                                                    <h6 class="notification-heading">Events near you</h6>
+                                                    <span class="notification-text">Within next 5 days</span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void()">
+                                                <span class="mr-3 avatar-icon bg-danger-lighten-2"><i class="icon-present"></i></span>
+                                                <div class="notification-content">
+                                                    <h6 class="notification-heading">Event Started</h6>
+                                                    <span class="notification-text">One hour ago</span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void()">
+                                                <span class="mr-3 avatar-icon bg-success-lighten-2"><i class="icon-present"></i></span>
+                                                <div class="notification-content">
+                                                    <h6 class="notification-heading">Event Ended Successfully</h6>
+                                                    <span class="notification-text">One hour ago</span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void()">
+                                                <span class="mr-3 avatar-icon bg-danger-lighten-2"><i class="icon-present"></i></span>
+                                                <div class="notification-content">
+                                                    <h6 class="notification-heading">Events to Join</h6>
+                                                    <span class="notification-text">After two days</span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li class="icons dropdown d-none d-md-flex">
+                            <a href="javascript:void(0)" class="log-user" data-toggle="dropdown">
+                                <span>English</span>  <i class="fa fa-angle-down f-s-14" aria-hidden="true"></i>
+                            </a>
+                            <div class="drop-down dropdown-language animated fadeIn  dropdown-menu">
+                                <div class="dropdown-content-body">
+                                    <ul>
+                                        <li><a href="javascript:void()">English</a></li>
+                                        <li><a href="javascript:void()">Dutch</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="icons dropdown">
+                            <div class="user-img c-pointer position-relative" data-toggle="dropdown">
+                                <span class="activity active"></span>
+                                <img src="images/user/1.png" height="40" width="40" alt="">
+                            </div>
+                            <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
+                                <div class="dropdown-content-body">
+                                    <ul>
+                                        <li>
+                                            <a href="app-profile.html"><i class="icon-user"></i> <span>Profile</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void()">
+                                                <i class="icon-envelope-open"></i> <span>Inbox</span> <div class="badge gradient-3 badge-pill gradient-1">3</div>
+                                            </a>
+                                        </li>
+
+                                        
+                                        <li>
+                                            <a href="page-lock.html"><i class="icon-lock"></i> <span>Lock Screen</span></a>
+                                        </li>
+                                        <li><a href="page-login.html"><i class="icon-key"></i> <span>Logout</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <div class="nk-sidebar">
+            <div class="nk-nav-scroll">
+                <ul class="metismenu" id="menu">
+                    <li>
+                        <a class="" asp-area="Dashboard" asp-controller="Dashboard" asp-action="Index" aria-expanded="false">
+                            <i class="icon-home menu-icon"></i><span class="nav-text">Dashboard</span>
+                        </a>
+
+                    </li>
+                    <li>
+                        <a asp-area="Dashboard" asp-controller="Dashboard" asp-action="OrderDetails" aria-expanded="false">
+                            <i class="icon-basket menu-icon"></i><span class="nav-text">Order Details</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="Dashboard" asp-controller="Dashboard" asp-action="ContectInfo" aria-expanded="false">
+                            <i class="icon-bubbles menu-icon"></i><span class="nav-text">Customer Message</span>
+                        </a>
+                    </li>
+                    @*<li class="nav-label">Table</li>*@
+                    <li class="mega-menu mega-menu-sm">
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-grid menu-icon"></i><span class="nav-text">Products Information</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a asp-area="Dashboard" asp-controller="Product" asp-action="Index"><i class="icon-list menu-icon"></i> Product List</a></li>
+                            <li><a asp-area="Dashboard" asp-controller="Product" asp-action="Create"><i class="icon-plus menu-icon"></i> New Product</a></li>
+
+                            <li><a asp-area="Dashboard" asp-controller="Category" asp-action="Index"><i class="icon-list menu-icon"></i> Category List</a></li>
+                            <li><a asp-area="Dashboard" asp-controller="Category" asp-action="Create"><i class="icon-plus menu-icon"></i> New Category</a></li>
+
+                            <li><a asp-area="Dashboard" asp-controller="Tag" asp-action="Index"><i class="icon-list menu-icon"></i> Tag List</a></li>
+                            <li><a asp-area="Dashboard" asp-controller="Tag" asp-action="Create"><i class="icon-plus menu-icon"></i> New Tag</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-note menu-icon"></i> <span class="nav-text">Role Panel</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a asp-area="Dashboard" asp-controller="Role" asp-action="Index">Role Control</a></li>
+                            <li><a asp-area="Dashboard" asp-controller="Role" asp-action="Assign">Assign Role</a></li>
+                            <li><a asp-area="Dashboard" asp-controller="Role" asp-action="AssignUserRole">Role Details</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-people menu-icon"></i><span class="nav-text">User Panel</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a asp-area="Dashboard" asp-controller="User" asp-action="Index">User Details</a></li>
+                            <li><a asp-area="Identity" asp-controller="Register" asp-action="Register">Create New User</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-label">Pages</li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon-notebook menu-icon"></i><span class="nav-text">Pages</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a asp-area="Identity" asp-page="/Account/Login">Login</a></li>
+                            <li><a asp-area="Identity" asp-controller="Register" asp-action="Register">Register</a></li>
+                            <li><a asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">Logout</a></li>
+                            <li>
+                                <a class="has-arrow" href="javascript:void()" aria-expanded="false">Error</a>
+                                <ul aria-expanded="false">
+                                    <li><a href="#">Error 404</a></li>
+                                    <li><a href="#">Error 403</a></li>
+                                    <li><a href="#">Error 400</a></li>
+                                    <li><a href="#">Error 500</a></li>
+                                    <li><a href="#">Error 503</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+
+        <!--**********************************
+               Content body start
+           ***********************************-->
+        <div class="content-body">
+            <div class="container-fluid mt-3">
+                <div>
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div><!--Main Warper End-->
+
+
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+        <!---------------------Alertify----------------------->
+        <script src="~/lib/alertifyjs_2/alertify.js"></script>
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+        <!---------------------Alertify----------------------->
+        <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    </environment>
+    <environment>
+        <!--------------Pagination Jquery Database------------>
+        <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
+        <!----------------Date Time Effect Jquery-------------->
+        <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+        <!----------------Font Awesome------------------------->
+        <script src="https://kit.fontawesome.com/4c7a57e3bc.js" crossorigin="anonymous"></script>
+
+        <!-- =========== Page Style ===========-->
+        <!-- Js Plugins -->
+        <script src="~/Dashboard/plugins/common/common.min.js"></script>
+        <script src="~/Dashboard/js/custom.min.js"></script>
+        <script src="~/Dashboard/js/settings.js"></script>
+        <script src="~/Dashboard/js/gleek.js"></script>
+        <script src="~/Dashboard/js/styleSwitcher.js"></script>
+
+        <!-- Chartjs -->
+        <script src="~/Dashboard/plugins/chart.js/Chart.bundle.min.js"></script>
+        <!-- Circle progress -->
+        <script src="~/Dashboard/plugins/circle-progress/circle-progress.min.js"></script>
+        <!-- Datamap -->
+        <script src="~/Dashboard/plugins/d3v3/index.js"></script>
+        <script src="~/Dashboard/plugins/topojson/topojson.min.js"></script>
+        <script src="~/Dashboard/plugins/datamaps/datamaps.world.min.js"></script>
+        <!-- Morrisjs -->
+        <script src="~/Dashboard/plugins/raphael/raphael.min.js"></script>
+        <script src="~/Dashboard/plugins/morris/morris.min.js"></script>
+        <!-- Pignose Calender -->
+        <script src="~/Dashboard/plugins/pg-calendar/js/pignose.calendar.min.js"></script>
+        <!-- ChartistJS -->
+        <script src="~/Dashboard/plugins/chartist/js/chartist.min.js"></script>
+        <script src="~/Dashboard/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
+
+        <script src="~/Dashboard/js/dashboard/dashboard-1.js"></script>
+    </environment>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

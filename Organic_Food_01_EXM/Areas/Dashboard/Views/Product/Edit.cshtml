@@ -1,0 +1,129 @@
+﻿@model Organic_Food_01_EXM.Models.Products
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2 class="text-info">Edit Product</h2>
+
+<!--Success && Delete Dialog Start-->
+@if (ViewBag.message != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show">
+        <strong> @ViewBag.message</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+
+    <div class="p-3 rounded border row">
+        <div asp-validation-summary="ModelOnly"></div>
+        <input type="hidden" asp-for="Id" />
+
+        <div class="col-8">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="ProductTitle"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="ProductTitle" class="form-control" />
+                </div>
+                <span asp-validation-for="ProductTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="ProductPrice"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="ProductPrice" class="form-control" />
+                </div>
+                <span asp-validation-for="ProductPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="ProductAskPrice"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="ProductAskPrice" class="form-control" />
+                </div>
+                <span asp-validation-for="ProductAskPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="ProductDetails"></label>
+                </div>
+                <div class="col-8">
+                    <textarea rows="4" type="text" asp-for="ProductDetails" class="form-control"></textarea>
+                </div>
+                <span asp-validation-for="ProductDetails" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Image"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Image" type="file" class="form-control" />
+                </div>
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="ProductColor" class="control-label"></label>
+                </div>
+                <div class="col-8">
+                    <select asp-for="ProductColor" class="form-control">
+                        <option value="Pink" style="color: #f780c0;"> Pink</option>
+                        <option value="Blue" style="color: #219dc6; ">Blue</option>
+                        <option value="Yellow" style="color: #f1ef3a;">Yellow</option>
+                        <option value="Green" style="color: #82cb55;">Green</option>
+                        <option value="Brown" style="color: #7a4040;">Brown</option>
+                        <option value=" Red" style="color: #f15c3a;">Red</option>
+                    </select>
+                </div>
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="CategoryId"></label>
+                </div>
+                <div class="col-8">
+                    <select asp-for="CategoryId" asp-items="ViewBag.categoryId" class="form-control"></select>
+                </div>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="TagId"></label>
+                </div>
+                <div class="col-8">
+                    <select asp-for="TagId" asp-items="ViewBag.tagId" class="form-control"></select>
+                </div>
+                <span asp-validation-for="TagId" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="IsAvailable"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="IsAvailable" class="" type="checkbox" />
+                </div>
+                <span asp-validation-for="IsAvailable" class="text-danger"></span>
+            </div>
+            <div class="form-group row offset-4">
+                <input type="submit" class="btn btn-primary mr-2" value="Update" />
+                <a asp-action="Index" class="btn btn-success">Back To List</a>
+            </div>
+        </div>
+        <div class="col-4">
+            <img src="~/@Model.Image" style="width:100%; border-radius:5px; border:2px solid orange" />
+        </div>
+
+    </div>
+</form>
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

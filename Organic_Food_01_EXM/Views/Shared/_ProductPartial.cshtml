@@ -1,0 +1,383 @@
+﻿
+<div class="container">
+    <div class="row">
+        <!-- Sidebar -->
+        <div id="left-column" class="sidebar col-lg-3 col-md-3 col-sm-3 col-xs-12">
+            <!-- Block - Product Categories -->
+            <div class="block product-categories">
+                <h3 class="block-title">Categories</h3>
+
+                <div class="block-content">
+                    <div class="item">
+                        <span class="arrow collapsed" data-toggle="collapse" data-target="#vegetables" aria-expanded="false" role="button">
+                            <i class="zmdi zmdi-minus"></i>
+                            <i class="zmdi zmdi-plus"></i>
+                        </span>
+
+                        <a class="category-title" asp-area="Shopper" asp-controller="Home" asp-action="Vegetable">Vegetables</a>
+                        <div class="sub-category collapse" id="vegetables" aria-expanded="true" role="main">
+                            <div class="item">
+                                <a asp-area="Shopper" asp-controller="Home" asp-action="Tomato">Tomato</a>
+                            </div>
+                            <div class="item">
+                                <a asp-area="Shopper" asp-controller="Home" asp-action="Broccoli">Broccoli</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <a class="category-title" asp-area="Shopper" asp-controller="Home" asp-action="Fruit">Fruit</a>
+                    </div>
+
+                    <div class="item">
+                        <a class="category-title" asp-area="Shopper" asp-controller="Home" asp-action="Bread">Bread</a>
+                    </div>
+
+                    <div class="item">
+                        <a class="category-title" asp-area="Shopper" asp-controller="Home" asp-action="Juice">Juice</a>
+                    </div>
+
+                    <div class="item">
+                        <a class="category-title" asp-area="Shopper" asp-controller="Home" asp-action="TeaCoffee">Tea and Coffee</a>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- Block - Filter -->
+            <div class="block product-filter">
+                <h3 class="block-title">Catalog</h3>
+
+                <div class="block-content">
+                    <div class="filter-item">
+                        <h3 class="filter-title">Categories</h3>
+
+                        <div class="filter-content">
+                            <ul>
+                                <li>
+                                    <label class="check">
+                                        <span class="custom-checkbox">
+                                            <input type="checkbox">
+                                            <span class="checkmark"></span>
+                                        </span>
+                                        <a asp-area="Shopper" asp-controller="Home" asp-action="Tomato">Tomato <span class="quantity">(@ViewBag.Tomato)</span></a>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="check">
+                                        <span class="custom-checkbox">
+                                            <input type="checkbox">
+                                            <span class="checkmark"></span>
+                                        </span>
+                                        <a asp-area="Shopper" asp-controller="Home" asp-action="Broccoli">Broccoli <span class="quantity">(@ViewBag.Broccoli)</span></a>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="check">
+                                        <span class="custom-checkbox">
+                                            <input type="checkbox">
+                                            <span class="checkmark"></span>
+                                        </span>
+                                        <a asp-area="Shopper" asp-controller="Home" asp-action="Bread">Bread <span class="quantity">(@ViewBag.Bread)</span></a>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="check">
+                                        <span class="custom-checkbox">
+                                            <input type="checkbox">
+                                            <span class="checkmark"></span>
+                                        </span>
+                                        <a asp-area="Shopper" asp-controller="Home" asp-action="Juice">Juice <span class="quantity">(@ViewBag.Juice)</span></a>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="check">
+                                        <span class="custom-checkbox">
+                                            <input type="checkbox">
+                                            <span class="checkmark"></span>
+                                        </span>
+                                        <a asp-area="Shopper" asp-controller="Home" asp-action="TeaCoffee">Tea and Coffee <span class="quantity">(@ViewBag.TeaCoffee)</span></a>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label class="check">
+                                        <span class="custom-checkbox">
+                                            <input type="checkbox">
+                                            <span class="checkmark"></span>
+                                        </span>
+                                        <a asp-area="Shopper" asp-controller="Home" asp-action="Vegetable">Vegetable <span class="quantity">(@ViewBag.Vegetable)</span></a>
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="filter-item">
+                        <h3 class="filter-title">By Price</h3>
+
+                        <div class="block-content">
+                            <div id="slider-range" class="tiva-filter">
+                                <div class="filter-item price-filter">
+                                    <div class="layout-slider">
+
+                                        <input id="price-filter" name="lowAmount" value="0;100" />
+                                    </div>
+                                    <div class="layout-slider-settings"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-item">
+                        <h3 class="filter-title">By Color</h3>
+
+                        <div class="block-content">
+                            <div class="filter-color">
+                                <div class="left">
+                                    <div class="item">
+                                        <label class="color color-1"></label>
+                                        <span class="color-label">Blue</span>
+                                        <span>(@ViewBag.Blue)</span>
+                                    </div>
+                                    <div class="item">
+                                        <label class="color color-3"></label>
+                                        <span class="color-label">Yellow</span>
+                                        <span>(@ViewBag.Yellow)</span>
+                                    </div>
+                                    <div class="item">
+                                        <label class="color color-5"></label>
+                                        <span class="color-label">Pink</span>
+                                        <span>(@ViewBag.Pink)</span>
+                                    </div>
+                                </div>
+                                <div class="right">
+                                    <div class="item">
+                                        <label class="color color-2"></label>
+                                        <span class="color-label">Green</span>
+                                        <span>(@ViewBag.Green)</span>
+                                    </div>
+                                    <div class="item">
+                                        <label class="color color-4"></label>
+                                        <span class="color-label">Brown</span>
+                                        <span>(@ViewBag.Brown)</span>
+                                    </div>
+                                    <div class="item">
+                                        <label class="color color-6"></label>
+                                        <span class="color-label">Red</span>
+                                        <span>(@ViewBag.Red)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <!-- Page Content -->
+        <div id="center-column" class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+            <div class="product-category-page">
+                <!-- Nav Bar -->
+                <div class="products-bar">
+                    <div class="row">
+                        <div class="col-md-6 col-xs-6">
+                            <div class="gridlist-toggle" role="tablist">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#products-grid" data-toggle="tab" aria-expanded="true"><i class="fa fa-th-large"></i></a></li>
+                                    <li><a href="#products-list" data-toggle="tab" aria-expanded="false"><i class="fa fa-bars"></i></a></li>
+                                </ul>
+                            </div>
+
+                            <div class="total-products">There are 12 products</div>
+                        </div>
+
+                        <div class="col-md-6 col-xs-6">
+                            <div class="filter-bar">
+                                <form action="#" class="pull-right">
+                                    <div class="select">
+                                        <select class="form-control">
+                                            <option value="">Sort By</option>
+                                        </select>
+                                    </div>
+                                </form>
+                                <form action="#" class="pull-right">
+                                    <div class="select">
+                                        <select class="form-control">
+                                            <option value="">Relevance</option>
+                                            <option value="1">Product Name: A to Z</option>
+                                            <option value="2">Product Name: Z to A</option>
+                                            <option value="3">In stock</option>
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content">
+                    <!-- Products Grid -->
+                    <div class="tab-pane active" id="products-grid">
+                        <div class="products-block">
+                            <div class="row">
+                                @foreach (var product in Model)
+                                {
+                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                        <div class="product-item">
+                                            <div class="product-image">
+                                                <a asp-action="Details" asp-controller="Home" asp-route-id="@product.Id">
+                                                    <img class="img-responsive" src="~/@product.Image" alt="Product Image">
+                                                </a>
+                                            </div>
+
+                                            <div class="product-title">
+                                                <a asp-action="Details" asp-controller="Home" asp-route-id="@product.Id">
+                                                    @product.ProductTitle
+                                                </a>
+                                            </div>
+
+                                            <div class="product-rating">
+                                                <div class="star on"></div>
+                                                <div class="star on"></div>
+                                                <div class="star on "></div>
+                                                <div class="star on"></div>
+                                                <div class="star"></div>
+                                            </div>
+
+                                            <div class="product-price">
+                                                <span class="sale-price">@product.ProductPrice</span>
+                                                <span class="base-price">@product.ProductAskPrice</span>
+                                            </div>
+
+                                            <div class="product-buttons">
+                                                <a class="add-to-cart" asp-action="Details" asp-controller="Home" asp-route-id="@product.Id">
+                                                    <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+                                                </a>
+
+                                                <a class="add-wishlist" href="#">
+                                                    <i class="fa fa-heart" aria-hidden="true"></i>
+                                                </a>
+
+                                                <a class="quickview" asp-action="Details" asp-controller="Home" asp-route-id="@product.Id">
+                                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Products List -->
+                    <div class="tab-pane" id="products-list">
+                        <div class="products-block layout-5">
+                            @foreach (var product in Model)
+                            {<div class="product-item">
+                                    <div class="row">
+
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                            <div class="product-image">
+                                                <a href="product-detail-left-sidebar.html">
+                                                    <img class="img-responsive" src="~/@product.Image" alt="Product Image">
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+                                            <div class="product-info">
+                                                <div class="product-title">
+                                                    <a asp-action="Details" asp-controller="Home" asp-route-id="@product.Id">
+                                                        @product.ProductTitle
+                                                    </a>
+                                                </div>
+
+                                                <div class="product-rating">
+                                                    <div class="star on"></div>
+                                                    <div class="star on"></div>
+                                                    <div class="star on "></div>
+                                                    <div class="star on"></div>
+                                                    <div class="star"></div>
+                                                    <span class="review-count">(3 Reviews)</span>
+                                                </div>
+
+                                                <div class="product-price">
+                                                    <span class="sale-price">@product.ProductPrice</span>
+                                                    <span class="base-price">@product.ProductAskPrice</span>
+                                                </div>
+
+                                                <div class="product-stock">
+                                                    <i class="fa fa-check-square-o" aria-hidden="true"></i>In stock
+                                                </div>
+
+                                                <div class="product-description">
+                                                    @product.ProductDetails
+                                                </div>
+
+                                                <div class="product-buttons">
+                                                    <a class="add-to-cart" asp-action="Details" asp-controller="Home" asp-route-id="@product.Id">
+                                                        <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+                                                        <span>Add To Cart</span>
+                                                    </a>
+
+                                                    <a class="add-wishlist" href="#">
+                                                        <i class="fa fa-heart" aria-hidden="true"></i>
+                                                    </a>
+
+                                                    <a class="quickview" asp-action="Details" asp-controller="Home" asp-route-id="@product.Id">
+                                                        <i class="fa fa-eye" aria-hidden="true"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination Bar -->
+                <div class="pagination-bar">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="text">Showing 1-12 of 20 item(s)</div>
+                        </div>
+
+                        <div class="col-md-8 col-sm-8 col-xs-12">
+                            <div class="pagination">
+                                <ul class="page-list">
+                                    <li><a href="#" class="prev">Previous</a></li>
+                                    @{
+                                        int i;
+                                    }
+                                    @for (i = 1; i <= ViewBag.total; i++)
+                                    {
+                                        if (i == ViewBag.CurrentPage)
+                                        {
+                                            <li>
+                                                <a class="current">@i</a>
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            <li>
+                                                @Html.ActionLink(i.ToString(), "Product", "Home", new { id = @i }, new { @class = "page-link" })
+                                            </li>
+
+                                        }
+                                    }
+
+                                    <li><a href="#" class="next">Next</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

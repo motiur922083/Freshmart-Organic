@@ -1,0 +1,64 @@
+﻿@{
+    ViewData["Title"] = "UserRoleMapping";
+}
+
+<br />
+<br />
+<h2 class="text-info">Assign User Role</h2>
+
+<br />
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="active-member">
+                    <div class="table-responsive">
+                        <table class="table table-xs mb-0">
+                            <thead>
+                                <tr>
+                                    <th>User Name</th>
+                                    <th>Role Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in ViewBag.UserRoles)
+                                {
+                                    <tr>
+                                        <td>@item.UserName</td>
+                                        <td>@item.RoleName</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+
+
+    <script type="text/javascript">
+        $(function () {
+            var save = '@TempData["save"]'
+            if (save != '') {
+                alertify.set('notifier', 'position', 'top-right');
+                alertify.success(save);
+            }
+            var delt = '@TempData["delete"]'
+            if (save != '') {
+                alertify.set('notifier', 'position', 'top-right');
+                alertify.success(save);
+            }
+        });
+    </script>
+}

@@ -1,0 +1,133 @@
+﻿@model Organic_Food_01_EXM.Models.ApplicationUser
+@{
+    ViewData["Title"] = "Register";
+
+}
+
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center mb-5">
+                <h2 class="heading-section"><a asp-area="Shopper" asp-controller="Home" asp-action="Index"><img src="~/Freshmart-Organic/img/logo.png" /></a></h2>
+            </div>
+        </div>
+
+           
+        <div class="row justify-content-center">
+            <div class="col-md-7 col-lg-5">
+                <div class="register-wrap p-4 p-md-5">
+                    <div class="d-flex">
+                        <div class="w-100">
+                            <h3 class="mb-4">CREATE ACCOUNT</h3>
+                        </div>
+                        <div class="w-100">
+                            <p class="social-media d-flex justify-content-end">
+                                <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
+                                <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a>
+                            </p>
+                        </div>
+                    </div>
+                    <form asp-action="Register" id="register-form" method="post" enctype="multipart/form-data" class="register-form">
+                        <div asp-validation-summary="ModelOnly"></div>
+                        <div class="row">
+                            <div class=" col-6 form-group">
+                                <div class="icon d-flex align-items-center justify-content-center">
+                                    <span class="fa fa-user"></span>
+                                </div>
+                                <input asp-for="FirstName" class="form-control rounded-left" placeholder="First Name" required>
+                                <span asp-validation-for="FirstName" class="text-danger"></span>
+                            </div>
+                            <div class=" col-6 form-group">
+                                <div class="icon d-flex align-items-center justify-content-center">
+                                    <span class="fa fa-user"></span>
+                                </div>
+                                <input asp-for="LastName" class="form-control rounded-left" placeholder="First Name" required>
+                                <span asp-validation-for="LastName" class="text-danger"></span>
+                            </div>
+                            <div class="col-12 form-group">
+                                <div class="icon d-flex align-items-center justify-content-center">
+                                    <span class="fa fa-envelope"></span>
+                                </div>
+                                <input asp-for="UserName" class="form-control rounded-left" placeholder="email" required>
+                                <span asp-validation-for="UserName" class="text-danger"></span>
+                            </div>
+                            <div class="col-12 form-group">
+                                <div class="icon d-flex align-items-center justify-content-center" style="z-index:200">
+                                    <span class="fa fa-lock"></span>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <input asp-for="PasswordHash" id="password-field" type="password" class="form-control col-12" placeholder="Password">
+                                    </div>
+                                    <div class="col" style="margin-left:-30px;margin-top:12px;">
+                                        <span toggle="#password-field" class="fa fa-fw fa-eye-slash field-icon toggle-password" style="float:left; margin-left:-25px"></span>
+                                    </div>
+                                </div>
+                                <span asp-validation-for="PasswordHash" class="text-danger"></span>
+                            </div>
+                            <div class="col-12 form-group">
+                                <div class="justify-content-center">
+                                    <button type="submit" class="btn btn-primary form-control rounded submit">Register</button>
+                                </div>
+                            </div>
+                            <div class="col-12 form-group mt-4">
+                                <div class="w-100 text-center">
+                                    <p class="mb-1">Don't have an account? <a asp-area="Identity" asp-page="/Account/Login">Sign Up</a></p>
+                                    <p><a href="#">Forgot Password</a></p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+
+
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+
+        $(".toggle-password").click(function () {
+
+            $(this).toggleClass("fa-eye-slash fa-eye");
+            var input = $($(this).attr("toggle"));
+            if (input.attr("type") == "password") {
+                input.attr("type", "text");
+            } else {
+                input.attr("type", "password");
+            }
+        });
+
+        $(document).ready(function () {
+            $("#register-form").validate({
+                rules: {
+                    FirstName: {
+                        required: true,
+                    },
+                    LastName: {
+                        required: true,
+                    },
+                    UserName: {
+                        required: true,
+                    },
+                    PasswordHash: {
+                        required: true,
+                    },
+                    messages: {
+                        UserName: "Please Enter Your Email",
+                        PasswordHash: "Please Enter Password",
+                    }
+
+                }
+            });
+        });
+    </script>
+}

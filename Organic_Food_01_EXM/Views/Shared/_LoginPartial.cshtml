@@ -1,0 +1,35 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="item">
+        <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Log in to your customer account" style="max-width: 50px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><i class="fa fa-cog"></i>@User.Identity.Name</a>
+    </div>
+    <div class="item">
+        <form id="GFG" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <a onclick="myFunction()" href="#"><i class="fa fa-sign-in"></i>Logout</a>
+        </form>
+    </div>
+}
+else
+{
+    <div class="item">
+        <a asp-area="Identity" asp-controller="Register" asp-action="Register" title="Register in to your customer account"><i class="fa fa-user"></i>Register</a>
+    </div>
+    <div class="item">
+        <a asp-area="Identity" asp-page="/Account/Login" title="Login Account"><i class="fa fa-sign-in"></i>Login</a>
+    </div>
+}
+
+<div class="item">
+    <a href="#" title="My Wishlists"><i class="fa fa-heart"></i>My Wishlists</a>
+</div>
+
+<script>
+    function myFunction() {
+        document.getElementById("GFG").submit();
+    }
+</script>

@@ -1,0 +1,30 @@
+﻿@page
+@model LockoutModel
+@{
+    ViewData["Title"] = "Locked out";
+
+    Layout = "~/Areas/Identity/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- Main Content -->
+<div id="content" class="site-content page-404">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 page-left">
+                <div class="image">
+                    <img class="img-responsive" src="~/Freshmart-Organic/img/404-left.png" alt="Image 404">
+                </div>
+                <div class="title">We’re sorry — This account has been <span style="color:red">@ViewData["Title"]</span>, please try again later.</div>
+                <div class="content">If difficulties persist, please contact the System Administrator of this site and report the error below.</div>
+                <a class="btn btn-primary" asp-area="Shopper" asp-controller="Home" asp-action="Index"><i class="fa fa-home" aria-hidden="true"></i><span> Back to homepage</span></a>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 page-right">
+                <div class="image">
+                    <img class="img-responsive" src="~/Freshmart-Organic/img/404-right.jpg" alt="Image 404">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

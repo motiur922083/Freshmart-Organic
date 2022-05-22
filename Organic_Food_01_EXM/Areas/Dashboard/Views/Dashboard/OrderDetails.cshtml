@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Organic_Food_01_EXM.Models.OrderProduct>
+@{
+    ViewData["Title"] = "OrderDetails";
+
+    int serialNumber = 0;
+}
+
+<h2 class="text-info">Product Order Details</h2>
+
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="active-member">
+                    <div class="table-responsive">
+                        <table class="table table-xs mb-0">
+                            <thead>
+                                <tr>
+                                    <th>SL NO</th>
+                                    <th>@Html.DisplayNameFor(x => x.OrderNo)</th>
+                                    <th>Name</th>
+                                    <th>@Html.DisplayNameFor(x => x.PhoneNo)</th>
+                                    <th>@Html.DisplayNameFor(x => x.Email)</th>
+                                    <th>@Html.DisplayNameFor(x => x.Address)</th>
+                                    <th>@Html.DisplayNameFor(x => x.OrderDate)</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    serialNumber = serialNumber + 1;
+                                    <tr>
+                                        <td>
+                                            @serialNumber
+                                        </td>
+                                        <td>@Html.DisplayFor(x => item.OrderNo)</td>
+                                        <td>@item.FirstName @item.LastName</td>
+                                        <td>@Html.DisplayFor(x => item.PhoneNo)</td>
+                                        <td>@Html.DisplayFor(x => item.Email)</td>
+                                        <td>@Html.DisplayFor(x => item.Address)</td>
+                                        <td>@Html.DisplayFor(x => item.OrderDate)</td>
+                                        <td>
+                                            <a class="btn btn-success">Or The Way</a>
+                                            <a class="btn btn-success">Confirm</a>
+                                            <a class="btn btn-success">Cancel</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

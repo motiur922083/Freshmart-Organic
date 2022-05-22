@@ -1,0 +1,210 @@
+﻿@model Organic_Food_01_EXM.Models.Products
+@{
+    ViewData["Title"] = "Details";
+}
+
+@using Organic_Food_01_EXM.Utility
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    List<Products> products = HttpContextAccessor.HttpContext.Session.Get<List<Products>>("products");
+    Products product = null;
+    if (products != null)
+    {
+        product = products.FirstOrDefault(c => c.Id == Model.Id);
+    }
+}
+
+
+<form asp-action="Details" id="GFG" method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly"></div>
+    <input type="hidden" asp-for="Id" />
+
+    <div class="container">
+        <div class="product-detail">
+            <div class="products-block layout-5">
+                <div class="product-item">
+                    <div class="product-title">
+                        @Model.ProductTitle
+                    </div>
+
+                    <div class="row">
+                        <div class="product-left col-md-5 col-sm-5 col-xs-12">
+                            <div class="product-image vertical">
+                                <div class="main-image">
+                                    <img class="img-responsive" src="~/@Model.Image" alt="Product Image">
+                                </div>
+                                <div class="thumb-images">
+                                    <img class="img-responsive" src="~/@Model.Image" alt="Product Image">
+                                    <img class="img-responsive" src="~/@Model.Image" alt="Product Image">
+                                    <img class="img-responsive" src="~/@Model.Image" alt="Product Image">
+                                    <img class="img-responsive" src="~/@Model.Image" alt="Product Image">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-right col-md-7 col-sm-7 col-xs-12">
+                            <div class="product-info">
+                                <div class="product-price">
+                                    <span class="sale-price">@Model.ProductPrice</span>
+                                    <span class="base-price">@Model.ProductAskPrice</span>
+                                </div>
+
+                                <div class="product-stock">
+                                    <span class="availability">Availability :</span><i class="fa fa-check-square-o" aria-hidden="@Model.IsAvailable"></i>In stock
+                                </div>
+
+                                <div class="product-short-description">
+                                    @Model.ProductDetails
+                                </div>
+
+
+                                <div class="product-add-to-cart border-bottom">
+                                    <div class="product-quantity">
+                                        <span class="control-label">QTY :</span>
+                                        <div class="qty">
+                                            <div class="input-group">
+                                                <select name="cars" id="cars" style="width: 65px; height: 36px">
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                </select>
+                                                @*<input type="text" name="qty" value="1" data-min="1">
+                                                <span class="adjust-qty">
+                                                    <span class="adjust-btn plus">+</span>
+                                                    <span class="adjust-btn minus">-</span>
+                                                </span>*@
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="product-buttons">
+
+                                        @if (product != null)
+                                        {
+                                        <a class="add-to-cart" asp-action="Remove" asp-route-id="@Model.Id">
+                                            <i class="fa fa-xing" aria-hidden="true"></i>
+                                            <span style="color:red;">Remove To Cart</span>
+                                        </a>
+                                            
+                                        }
+                                        else
+                                        {
+                                            <a href="#" class="add-to-cart" onclick="myFunction()">
+                                                <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+                                                <span>Add To Cart</span>
+                                            </a>
+                                        }
+
+                                        <a class="add-wishlist" href="#">
+                                            <i class="fa fa-heart" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="product-share border-bottom">
+                                    <div class="item">
+                                        <a href="#"><i class="zmdi zmdi-share" aria-hidden="true"></i><span class="text">Share</span></a>
+                                    </div>
+                                    <div class="item">
+                                        <a href="#"><i class="zmdi zmdi-email" aria-hidden="true"></i><span class="text">Send to a friend</span></a>
+                                    </div>
+                                    <div class="item">
+                                        <a href="#"><i class="zmdi zmdi-print" aria-hidden="true"></i><span class="text">Print</span></a>
+                                    </div>
+                                </div>
+
+                                <div class="product-review border-bottom">
+                                    <div class="item">
+                                        <div class="product-quantity">
+                                            <span class="control-label">Review :</span>
+                                            <div class="product-rating">
+                                                <div class="star on"></div>
+                                                <div class="star on"></div>
+                                                <div class="star on"></div>
+                                                <div class="star on"></div>
+                                                <div class="star"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="item">
+                                        <a href="#"><i class="zmdi zmdi-comments" aria-hidden="true"></i><span class="text">Read Reviews (3)</span></a>
+                                    </div>
+
+                                    <div class="item">
+                                        <a href="#"><i class="zmdi zmdi-edit" aria-hidden="true"></i><span class="text">Write a review</span></a>
+                                    </div>
+                                </div>
+
+                                <div class="product-extra">
+                                    <div class="item">
+                                        <span class="control-label">Review :</span><span class="control-label">E-02154</span>
+                                    </div>
+                                    <div class="item">
+                                        <span class="control-label">Categories :</span>
+                                        <a href="#" title="Vegetables">Vegetables,</a>
+                                        <a href="#" title="Fruits">Fruits,</a>
+                                        <a href="#" title="Apple">Apple</a>
+                                    </div>
+                                    <div class="item">
+                                        <span class="control-label">Tags :</span>
+                                        <a href="#" title="Vegetables">Hot Trend,</a>
+                                        <a href="#" title="Fruits">Summer</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-tab">
+                        <!-- Tab Navigation -->
+                        <div class="tab-nav">
+                            <ul>
+                                <li class="active">
+                                    <a data-toggle="tab" href="#description">
+                                        <span>Description</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a data-toggle="tab" href="#additional-information">
+                                        <span>Additional Information</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Tab Content -->
+                        <div class="tab-content">
+                            <!-- Description -->
+                            <div role="tabpanel" class="tab-pane fade in active" id="description">
+                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+                            </div>
+
+                            <!-- Product Tag -->
+                            <div role="tabpanel" class="tab-pane fade" id="additional-information">
+                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</form>
+ 
+@section Scripts{
+        @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+
+<script>
+    function myFunction() {
+        document.getElementById("GFG").submit();
+    }
+</script>

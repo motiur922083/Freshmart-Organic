@@ -1,0 +1,39 @@
+﻿<!---------------------Sweet Alert----------------------->
+<input type="button" value="Alert Message" name="alertMessage" id="btnAlermessage" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+<script>
+    // Problem related to Boostrap 4 according to issue in link below && Pagination Style CSS
+    $(document).ready(function () {
+        $('ul.pagination > li.disabled > a').addClass('page-link');
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnAlermessage").click(function () {
+            //alert("Alert Message");
+            //swal("Here is the alert Message")
+            swal("Good job!", "You clicked the button!", "success");
+        })
+    });
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+
+<!---------------------Alertify----------------------->
+<input type="button" value="Alertify Message" name="alertMessage" id="btAlertify" />
+
+<link href="~/lib/alertifyjs_2/css/alertify.css" rel="stylesheet" />
+<link href="~/lib/alertifyjs_2/css/themes/bootstrap.css" rel="stylesheet" />
+<link href="~/lib/alertifyjs_2/css/themes/default.css" rel="stylesheet" />
+
+<script src="~/lib/alertifyjs_2/alertify.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+<script type="text/javascript">
+    $("#btAlertify").on('click', function () {
+        alertify.success('Success message');
+    });
+</script>
